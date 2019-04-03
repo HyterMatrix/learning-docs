@@ -6,6 +6,8 @@
     "webpack-dev-middleware": "^3.6.0"
   },
   "scripts": {
+    "doce:build": "npx vuepress build doce",
+    "doce:dev": "npx vuepress dev doce",
     "java:build": "npx vuepress build learning-java",
     "java:dev": "npx vuepress dev learning-java",
     "es6:build": "npx vuepress build learning-es6",
