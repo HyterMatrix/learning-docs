@@ -9,7 +9,7 @@ echo 开始编译
 call  npm run doce:build
 echo 编译完成
 :: 进入生成的文件夹
-cd ./learning-doce/.vuepress/dist
+cd ./doce/.vuepress/dist
 
 echo 初始化仓库 并推送到远程
 @call git init

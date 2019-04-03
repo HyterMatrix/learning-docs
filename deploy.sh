@@ -3,7 +3,7 @@ set -e
 
 npm run doce:build
 
-cd ./learning-doce/.vuepress/dist
+cd ./doce/.vuepress/dist
 git init
 git add -A
 git commit -m 'deploy'
