@@ -15,7 +15,7 @@ echo 初始化仓库 并推送到远程
 @call git init
 @call git add -A
 @call git commit -m 'deploy'
-@call git push -f git@github.com:HyterMatrix/learning-java.git master:gh-pages
+@call git push -f git@github.com:HyterMatrix/learning-doce.git master:gh-pages
 echo 推送完成
 cd ../../../
 echo;
