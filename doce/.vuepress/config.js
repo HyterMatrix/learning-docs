@@ -41,6 +41,20 @@ module.exports = {
                     ''
                 ]
             }],
+            '/es6/': [{
+                title: '笔记',
+                collapsable: false,
+                children:[
+                    ''
+                ]
+            }],
+            '/nodejs/': [{
+                title: '笔记',
+                collapsable: false,
+                children:[
+                    ''
+                ]
+            }],
 
         },
         serviceWorker: {

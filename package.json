@@ -7,12 +7,6 @@
   },
   "scripts": {
     "doce:build": "npx vuepress build doce",
-    "doce:dev": "npx vuepress dev doce",
-    "java:build": "npx vuepress build learning-java",
-    "java:dev": "npx vuepress dev learning-java",
-    "es6:build": "npx vuepress build learning-es6",
-    "es6:dev": "npx vuepress dev learning-es6",
-    "nodejs:build": "npx vuepress build learning-nodejs",
-    "nodejs:dev": "npx vuepress dev learning-nodejs"
+    "doce:dev": "npx vuepress dev doce"
   }
 }
