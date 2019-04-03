@@ -12,6 +12,13 @@ module.exports = {
                   ]
             },
             { text: '博客', link: 'https://hyter.me/' },
+            {
+                text: '备用地址',
+                items: [
+                    { text: '备用博客地址', link: 'https://HyterMatrix.coding.me/blog' },
+                    { text: '备用文档地址', link: 'https://HyterMatrix.coding.me/learning-doce' }
+                  ]
+            },
             { text: '更新记录', link: '/update/' },
         ],
         sidebar: {
