@@ -2,13 +2,26 @@ module.exports = {
     title: '学习文档',
     description: '自学记录的文档',
     themeConfig: {
+        repo: 'HyterMatrix/learning-doce',
+        repoLabel: '查看源码',
+        // 假如你的文档仓库和项目本身不在一个仓库：
+        docsRepo: 'HyterMatrix/learning-doce',
+        // 假如文档不是放在仓库的根目录下：
+        docsDir: 'docs',
+        // 假如文档放在一个特定的分支下：
+        docsBranch: 'master',
+        // 默认是 false, 设置为 true 来启用
+        editLinks: true,
+        // 默认为 "Edit this page"
+        editLinkText: '帮助我们改善此页面！',
         nav: [
             {
                 text: 'Java系列',
                 items: [
                     { text: 'Java', link: '/java/' },
-                    { text: 'SpringCloud', link: '/spring-boot/' },
-                    { text: 'SpringBoot', link: '/spring-cloud/' },
+                    { text: 'SpringBoot', link: '/spring-boot/' },
+                    { text: 'SpringCloud', link: '/spring-cloud/' },
+                    
                   ]
             },
             { text: '博客', link: 'https://hyter.me/' },
@@ -27,11 +40,10 @@ module.exports = {
                 collapsable: false,
                 children:[
                 '',
-                '01介绍',
-                '02基础知识',
-                '03对象与类',
-                '04继承',
-
+                '01-getting-started',
+                '02-java-basic',
+                '03-java-class-and-object',
+                '04-inheritance',
                 'QA']
             }],
             '/spring-boot/': [{
