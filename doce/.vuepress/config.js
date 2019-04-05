@@ -19,6 +19,7 @@ module.exports = {
                 text: 'Java系列',
                 items: [
                     { text: 'Java', link: '/java/' },
+                    { text: 'Spring', link: '/spring/' },
                     { text: 'SpringBoot', link: '/spring-boot/' },
                     { text: 'SpringCloud', link: '/spring-cloud/' },
                     
@@ -45,6 +46,13 @@ module.exports = {
                 '03-java-class-and-object',
                 '04-inheritance',
                 'QA']
+            }],
+            '/spring/': [{
+                title: '笔记',
+                collapsable: false,
+                children:[
+                    ''
+                ]
             }],
             '/spring-boot/': [{
                 title: '笔记',
