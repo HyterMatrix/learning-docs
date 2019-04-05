@@ -98,5 +98,6 @@ module.exports = {
     markdown:{
         lineNumbers: true
     },
-    base:'/learning-docs/'
+    base:'/learning-docs/',
+    port:8000
 };

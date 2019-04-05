@@ -114,3 +114,42 @@ public class HelloController {
 ### 5、运行主程序测试
 
 ### 6、简化部署
+
+```xml
+ <!-- 这个插件，可以将应用打包成一个可执行的jar包；-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+```
+
+将这个应用打成jar包，直接使用java -jar的命令进行执行；
+
+## Hello World 探究
+
+### 父项目
+```xml
+<parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.5.9.RELEASE</version>
+</parent>
+
+他的父项目是
+<parent>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-dependencies</artifactId>
+  <version>1.5.9.RELEASE</version>
+  <relativePath>../../spring-boot-dependencies</relativePath>
+</parent>
+他来真正管理Spring Boot应用里面的所有依赖版本；
+
+```
+
+Spring Boot的版本仲裁中心；
+
+以后我们导入依赖默认是不需要写版本；（没有在dependencies里面管理的依赖自然需要声明版本号）
