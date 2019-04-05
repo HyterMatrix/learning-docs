@@ -22,7 +22,6 @@ module.exports = {
                     { text: 'Spring', link: '/spring/' },
                     { text: 'SpringBoot', link: '/spring-boot/' },
                     { text: 'SpringCloud', link: '/spring-cloud/' },
-                    
                   ]
             },
             { text: '博客', link: 'https://hyter.me/' },
@@ -99,5 +98,5 @@ module.exports = {
     markdown:{
         lineNumbers: true
     },
-    base:'/learning-doce/'
+    base:'/learning-docs/'
 };
