@@ -1,9 +1,9 @@
 #!/usr/bin/env sh
 set -e
 
-npm run doce:build
+npm run docs:build
 
-cd ./doce/.vuepress/dist
+cd ./docs/.vuepress/dist
 git init
 git add -A
 git commit -m 'deploy'

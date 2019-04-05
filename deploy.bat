@@ -6,10 +6,10 @@ chcp 65001
 echo 当前目录是：%cd%
 echo 开始编译
 :: 生成静态文件
-call  npm run doce:build
+call  npm run docs:build
 echo 编译完成
 :: 进入生成的文件夹
-cd ./doce/.vuepress/dist
+cd ./docs/.vuepress/dist
 
 echo 初始化仓库 并推送到远程
 @call git init
