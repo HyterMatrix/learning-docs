@@ -2,12 +2,12 @@ module.exports = {
     title: '学习文档',
     description: '自学记录的文档',
     themeConfig: {
-        repo: 'HyterMatrix/learning-doce',
+        repo: 'HyterMatrix/learning-docs',
         repoLabel: '查看源码',
         // 假如你的文档仓库和项目本身不在一个仓库：
-        docsRepo: 'HyterMatrix/learning-doce',
+        docsRepo: 'HyterMatrix/learning-docs',
         // 假如文档不是放在仓库的根目录下：
-        docsDir: 'doce',
+        docsDir: 'docs',
         // 假如文档放在一个特定的分支下：
         docsBranch: 'master',
         // 默认是 false, 设置为 true 来启用
@@ -22,6 +22,10 @@ module.exports = {
                     { text: 'Spring', link: '/spring/' },
                     { text: 'SpringBoot', link: '/spring-boot/' },
                     { text: 'SpringCloud', link: '/spring-cloud/' },
+                    { text: '文档', items: [
+                            { text: '阿里巴巴Java开发', link: 'http://click.aliyun.com/m/1000019584/' },
+                        ] 
+                    },
                   ]
             },
             {
@@ -35,7 +39,7 @@ module.exports = {
                 text: '备用地址',
                 items: [
                     { text: '备用博客地址', link: 'https://HyterMatrix.coding.me/blog' },
-                    { text: '备用文档地址', link: 'https://HyterMatrix.coding.me/learning-doce' }
+                    { text: '备用文档地址', link: 'https://HyterMatrix.coding.me/learning-docs' }
                   ]
             },
             { text: '更新记录', link: '/update/' },
