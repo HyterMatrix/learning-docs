@@ -23,7 +23,7 @@ module.exports = {
                     { text: 'SpringBoot', link: '/spring-boot/' },
                     { text: 'SpringCloud', link: '/spring-cloud/' },
                     { text: '文档', items: [
-                            { text: '阿里巴巴Java开发', link: 'http://click.aliyun.com/m/1000019584/' },
+                            { text: '阿里巴巴Java开发手册', link: 'http://click.aliyun.com/m/1000019584/' },
                         ] 
                     },
                   ]
