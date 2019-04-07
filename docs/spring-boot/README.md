@@ -169,7 +169,7 @@ spring-boot-starter:spring-boot场景启动器：帮我们导入了web模块正�
 Spring Boot将所有的功能场景都抽取出来，做成一个个的starters（启动器），只需要在项目里面引入这些starter相关场景的所有依赖都会导入进来。要用什么功能就导入什么场景的启动器
 
 
-### 2、主程序类，主入口类
+### 主程序类，主入口类
 
 ```java
 /**
@@ -206,7 +206,7 @@ public @interface SpringBootApplication {
 
 @**SpringBootConfiguration**:Spring Boot的配置类；
 
-​		标注在某个类上，表示这是一个Spring Boot的配置类；
+    标注在某个类上，表示这是一个Spring Boot的配置类；
 
 ​		@**Configuration**:配置类上来标注这个注解；
 
@@ -240,7 +240,9 @@ public @interface EnableAutoConfiguration {
 
 ​		将所有需要导入的组件以全类名的方式返回；这些组件就会被添加到容器中；
 
-​		会给容器中导入非常多的自动配置类（xxxAutoConfiguration）；就是给容器中导入这个场景需要的所有组件，并配置好这些组件；		![自动配置类](images/搜狗截图20180129224104.png)
+​		会给容器中导入非常多的自动配置类（xxxAutoConfiguration）；就是给容器中导入这个场景需要的所有组件，并配置好这些组件；		
+
+![自动配置类](image/201904071616.png)
 
 有了自动配置类，免去了我们手动编写配置注入功能组件等的工作；
 
@@ -251,3 +253,23 @@ public @interface EnableAutoConfiguration {
 ==Spring Boot在启动的时候从类路径下的META-INF/spring.factories中获取EnableAutoConfiguration指定的值，将这些值作为自动配置类导入到容器中，自动配置类就生效，帮我们进行自动配置工作；==以前我们需要自己配置的东西，自动配置类都帮我们；
 
 J2EE的整体整合解决方案和自动配置都在spring-boot-autoconfigure-1.5.9.RELEASE.jar；
+
+
+## 使用Spring Initializer快速创建Spring Boot项目
+
+### IDEA：使用 Spring Initializer快速创建项目
+
+IDE都支持使用Spring的项目创建向导快速创建一个Spring Boot项目；
+
+选择我们需要的模块；向导会联网创建Spring Boot项目；
+
+默认生成的Spring Boot项目；
+
+- 主程序已经生成好了，我们只需要我们自己的逻辑
+- resources文件夹中目录结构
+  - static：保存所有的静态资源； js css  images；
+  - templates：保存所有的模板页面；（Spring Boot默认jar包使用嵌入式的Tomcat，默认不支持JSP页面）；可以使用模板引擎（freemarker、thymeleaf）；
+  - application.properties：Spring Boot应用的配置文件；可以修改一些默认设置；
+
+### STS使用 Spring Starter Project快速创建项目
+略

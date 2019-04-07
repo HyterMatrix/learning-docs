@@ -24,6 +24,12 @@ module.exports = {
                     { text: 'SpringCloud', link: '/spring-cloud/' },
                   ]
             },
+            {
+                text: 'Python系列',
+                items: [
+                    { text: 'Python', link: '/python/' },
+                  ]
+            },
             { text: '博客', link: 'https://hyter.me/' },
             {
                 text: '备用地址',
@@ -36,7 +42,7 @@ module.exports = {
         ],
         sidebar: {
             '/java/': [{
-                title: '笔记',
+                title: 'Java笔记',
                 collapsable: false,
                 children:[
                 '',
@@ -50,14 +56,15 @@ module.exports = {
                 title: '笔记',
                 collapsable: false,
                 children:[
-                    ''
+                    '',
                 ]
             }],
             '/spring-boot/': [{
-                title: '笔记',
+                title: 'SpringBoot',
                 collapsable: false,
                 children:[
-                    ''
+                    '',
+                    '01-spring-boot-config-file'
                 ]
             }],
             '/spring-cloud/': [{
