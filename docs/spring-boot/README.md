@@ -42,7 +42,7 @@ SpringBoot 来简化Spring应用开发，约定大于配置，去繁从简，jus
 –SpringBoot 1.5.9.RELEASE：1.5.9；
 
 统一环境；
-### 1、MAVEN设置；
+### MAVEN设置；
 
 给maven 的settings.xml配置文件的profiles标签添加
 
@@ -60,7 +60,7 @@ SpringBoot 来简化Spring应用开发，约定大于配置，去繁从简，jus
   </properties>
 </profile>
 ```
-### 2、IDEA设置
+### IDEA设置
 
 整合maven进来；
 
@@ -75,11 +75,11 @@ SpringBoot 来简化Spring应用开发，约定大于配置，去繁从简，jus
 
 浏览器发送hello请求，服务器接受请求并处理，响应Hello World字符串；
 
-### 1、创建一个maven工程；（jar）
+### 创建一个maven工程；（jar）
 
-### 2、导入spring boot相关的依赖
+### 导入spring boot相关的依赖
 
-### 3、编写一个主程序；启动Spring Boot应用
+### 编写一个主程序；启动Spring Boot应用
 
 ```java
 /**
@@ -96,7 +96,7 @@ public class HelloWorldMainApplication {
     }
 }
 ```
-### 4.编写相关的Controller、Service
+### 编写相关的Controller、Service
 
 ```java
 @Controller
@@ -111,9 +111,9 @@ public class HelloController {
 
 ```
 
-### 5、运行主程序测试
+### 运行主程序测试
 
-### 6、简化部署
+### 简化部署
 
 ```xml
  <!-- 这个插件，可以将应用打包成一个可执行的jar包；-->
