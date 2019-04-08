@@ -77,15 +77,19 @@ import java.time.LocalDate;
 
 public class EmployeeTest {
     public static void main(String[] args) {
+        // 构造了一个Employee数组，并填入了三个雇员对象
         Employee[] staff = new Employee[3];
 
         staff[0] = new Employee("Carl Cracker",75000, 1987,12,15);
         staff[1] = new Employee("Harry Hacker", 50000, 1989, 10, 1);
         staff[2] = new Employee("Tony Tester", 40000, 1990, 3, 15);
 
+        // 利用Employee类的reiseSalary方法将每个雇员的薪水提高5%：
         for (Employee e : staff)
             e.raiseSalary(5);
 
+
+        // 最后调用`getName`方法，`getSalary`方法和`getHireDay`方法将每个雇员的信息打印出来：
         for (Employee e: staff)
             System.out.println("name=" + e.getName() + ", salary=" + e.getSalary() + ", hireday=" + e.getHireDay());
 
@@ -136,4 +140,12 @@ class Employee {
 }
 ```
 
-在这个程序中
+在这个示例程序中包含两个类：Employee类和带有public访问修饰符的EmployeeTest类。EmployeeTest类包含了main方法。
+
+### 多个源文件的使用
+
+```shell
+javac Employee*.java
+#or
+javac EmployeeTest.java
+```
