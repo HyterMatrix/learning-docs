@@ -18,16 +18,125 @@
 - 继承性
 - 多态性
 
+### 类之间的关系
+ 
+- 依赖
+- 聚合
+- 继承
+
 ## 类与对象
 
 Java中定义类使用关键字class关键字
 
 ```java
-class 类名称{
-    // 类的成员变量
-    // 类的成员方法
+class ClassName
+{
+    field1
+    field2
+    ...
+    constructor1
+    constructor2
+    ...
+    method1
+    method2
+    ...
 }
 ```
+
+下面是一个简单的Employee类
+
+```java
+class Employee
+{
+    private String name;
+    private double salary;
+    private LocalDate hireDay;
+    public Employee(String n, double s, int year, int month, int day)
+    {
+        name = n;
+        salary = s;
+        hireDay = LocalDate.of(year,month, day);
+    }
+    public String getName()
+    {
+        return name;
+    }
+    // more methods
+    ...
+}
+```
+
+这里展示Employee类的实际使用
+
+```java
+import java.time.LocalDate;
+
+public class EmployeeTest {
+    public static void main(String[] args) {
+        // 构造了一个Employee数组，并填入了三个雇员对象
+        Employee[] staff = new Employee[3];
+
+        staff[0] = new Employee("Carl Cracker",75000, 1987,12,15);
+        staff[1] = new Employee("Harry Hacker", 50000, 1989, 10, 1);
+        staff[2] = new Employee("Tony Tester", 40000, 1990, 3, 15);
+
+        // 利用Employee类的reiseSalary方法将每个雇员的薪水提高5%：
+        for (Employee e : staff)
+            e.raiseSalary(5);
+
+
+        // 最后调用`getName`方法，`getSalary`方法和`getHireDay`方法将每个雇员的信息打印出来：
+        for (Employee e: staff)
+            System.out.println("name=" + e.getName() + ", salary=" + e.getSalary() + ", hireday=" + e.getHireDay());
+
+    }
+}
+
+
+class Employee {
+    private String name;
+    private double salary;
+    private LocalDate hireDay;
+
+    public Employee(String n, double s, int year, int month, int day)
+    {
+        name = n;
+        salary = s;
+        hireDay = LocalDate.of(year, month, day);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
+    public LocalDate getHireDay() {
+        return hireDay;
+    }
+
+    public void setHireDay(LocalDate hireDay) {
+        this.hireDay = hireDay;
+    }
+
+    public void raiseSalary(double byPercent){
+        double raise = salary * byPercent / 100;
+        salary += raise;
+    }
+}
+```
+
+在这个示例程序中包含两个类：Employee类和带有public访问修饰符的EmployeeTest类。EmployeeTest类包含了main方法。
 
 ### 成员变量
 
@@ -224,21 +333,130 @@ public String getName(){
 
 ### 对象的创建
 
+对象可以认为是在一类事务中抽象出某一个特例，可以通过这个特例来处理这类事物出现的问题。 
+
+在Java语言中通过`new`操作符来创建对象。
+
+```java
+Test test = new Test();
+Test test = new Test("A");
+```
+
+- Test：类名
+- test：创建Test类对象
+- new： 创建对象操作符
+- A： 构造方法的参数
+
+对象被创建出来的时，就是一个对象的引用，这个引用在内存中为对象分配了存储空间。每个对象都是相互独立的，在内存中占据独立的内存地址，并且每个对象都具有自己的生命周期，当一个对象的生命周期结束时，对象就变成垃圾，由Java虚拟机自带的垃圾回收机制处理,不能再被使用。
+
+```java
+public class CreateObject{
+    public CreateObject(){
+        System.out.println("创建对象");
+    }
+    public static void main(String[] args){
+        new CreateObject();
+    }
+}
+```
+
 ### 访问对象的属性和行为
+
+在使用`new`操作符创建对象以后，可以使用`对象.类成员`来获取对象的属性和行为。
 
 ### 对象的销毁
 
+每个对象都有生命周期，当对象的生命周期结束时，分配给该对象的内存地址会被回收。
+
+何种对象会被Java虚拟机视为垃圾
+- 对象引用超过其作用范围，这个对象将被视为垃圾。
+- 将对象复制为null
+
+虽然垃圾回收机制已经很完善，但垃圾回收器只能回收那些由new操作符创建的对象，如果某些对象不是通过new操作符在内存中获取一块内存区域，这种对象可能不能被垃圾回收机制所识别。
+
+Java提供了System.gc()方法强制启动垃圾回收器。
+
 ### this关键字
+
+this可以调用成员变量和成员方法。this引用的就是本类的一个对象，在局部变量或方法参数覆盖了成员变量时，就要添加this关键字明确引用的是类成员还是局部变量或方法参数。
 
 ## static 关键字
 
+有`static`修饰的变量、常量和方法被称作静态变量、静态常量和静态方法，也被成为类的静态成员。
+
+它属于整个类所有，而不是某个对象所有，即被类的所有对象所共享。静态成员可以使用类名直接访问，也可以使用对象名进行访问。当然，鉴于他作用的特殊性更推荐用类名访问。
+
 ### 静态变量
+
+```java
+public class HelloWorld{
+    static String hobby = "Hello";
+
+    public static void main(String[] args){
+        // 静态变量可以直接使用类名类访问，无需创建类的对象
+        System.out.println("通过类名访问hobby： "+ HelloWorld.hobby);
+        // 创建类的对象
+        HelloWorld hello = new HelloWorld();
+        // 通过对象名来访问静态变量
+        System.out.println("通过对象名访问hobby： "+ hello.hobby);
+        // 使用对象名的形式修改静态变量的值
+         hello.hobby = "world";
+        System.out.println("通过类名访问hobby： "+ HelloWorld.hobby);
+    }
+}
+```
+
+注意：
+1. 同一个类的不同实例对象，共用同一个静态变量，如果一个类将其变更，另一个类的静态变量也会变更。
+2. 静态成员属于整个类，当系统第一次使用该类时，就会为其分配内存空间直到该类被卸载才会进行资源回收！
 
 ### 静态常量
 
+用`final static`修饰一个成员变量，这个成员变量就会变成一个静态常量
+
+```java
+final static double PI = 3.1415926;
+```
+
+静态常量不可变，可以直接被访问，如`类名.静态常量名`。例如：
+
+```java
+public class MathTest{
+   public static final double PI= 3.1415926;
+}
+```
+
+可以直接采用`MathTest.PI`的形式访问该PI常量。
+
+给静态常量命名时所有字母都应该大写。
+
 ### 静态方法
 
+不需要创建对象，直接使用类来执行方法。`类名.静态方法()`
+
+```java
+public class StaticMethod{
+    static public void show(){
+        System.out.println("静态方法无需实例化就可以调用");
+    }
+    public static void main(String[] args){
+        StaticMethod.show();
+    }
+}
+```
+
 ### 静态代码块
+
+用static修饰代码区域可以称之为静态代码块。定义一块静态代码块，可以完成类的初始化操作。在声明时后就会运行
+
+```java
+public class StaticTest{
+    static {
+
+    }
+}
+```
+这里需要比较一下静态代码块`static{}`和代码块`{}`。晚点来补充。
 
 ## 类的主方法
 
