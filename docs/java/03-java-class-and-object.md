@@ -19,7 +19,7 @@
 - 多态性
 
 ### 类之间的关系
- 
+
 - 依赖
 - 聚合
 - 继承
@@ -310,6 +310,211 @@ class Book{
 }
 ```
 
+上面编写了简单的构造器，可以定义对象的初始状态。但是，由于对象构造非常重要，所以Java提供了多种编写构造器的机制。
+
+#### 重载
+
+有些类有多个构造器。例如可以构造一个空的StringBuilder对象
+
+```java
+StringBuilder messgers = new SrtingBuilder();
+```
+
+也可以指定一个初始字符串
+
+```java
+StringBuilder todoList = new StringBuilder("To do:\n");
+```
+
+这种特征叫做`重载（overloading）`。如果有多个方法（比如StringBuilder构造器方法）有相同的名字，不同的参数，便产生了重载。编译器必须挑选出执行哪一个方法，它通过用各个方法给出的参数类型与特定方法调用所使用的值类型进行匹配来挑选出相应的方法。如果编译器找不到匹配的参数，就会产生编译时错误，因为根本不存在匹配，或者没有一个比其他的更好。（这个过程被称为`重载解析（overloading resolution）`）
+
+#### 默认域初始化
+
+如果在构造器中没有显式的给域值赋予初值，那么就会被自动赋值为默认值；数值为0，布尔值为false，对象引用为null（可以参考[成员变量的默认值表](#成员变量) ）。非常不建议这样做。
+
+#### 无参数构造器
+
+很多类都包含一个无参数的构造函数，对象由无参数构造函数创建时，其状态会设置适当的默认值。例如，以下是Employee类的无参数构造函数
+
+```java
+public Employee(){
+    name = "";
+    salary = 0;
+    hireDay = localDate.now();
+}
+```
+
+如果在编写一个类时没有编写构造器，那么系统会提供一个无参数构造器。这个构造器将所有实例域设置为默认值。于是，实例域中的数值型数据设置为0，布尔型数据设置为false，所有对象变量设置为null。
+
+如果类中提供了至少一个构造器，但是没有提供无参数的构造器，则在构造对象时如果没有提供参数就会被视为不合法。
+
+**注意**仅当类没有提供任何构造器的时候，系统才会自动提供一个默认的构造器。
+
+#### 显式域初始化
+
+通过重载类的构造器方法，可以采用多种形式设置类的实例域的初始状态。确保不管怎么调用构造器，每个实例都可以被设置为一个有意义的初值，这是一个很好的设计习惯。
+
+可以在类定义中，直接将一个值赋给任何域
+
+```java
+class Employee{
+    private String name = "";
+}
+```
+
+在执行构造器之前，先执行赋值操作。
+
+初始值不一定是常量。在下面的例子中，可以调用方法对域进行初始化。
+
+```java
+class Employee
+{
+    private static int nextId;
+    private int id = assignId();
+    ...
+    private static int assignId()
+    {
+        int r = nextId;
+        nextId++;
+        return r;
+    }
+}
+```
+
+#### 调用另一个构造器
+
+关键字`this`引用方法的隐式参数。然而这个关键字还有另一个含义。
+如果构造器的第一个语句形如`this(...)`,这个构造器将调用同一个类的另一个构造器
+
+```java
+public Employee(double s)
+{
+    this("Employee #" + nextId, s);
+    nextId++;
+}
+```
+
+当调用`new Employee(600000)`时，Employee(double) 构造器将调用`Employee(String, double)`构造器。采用这种方式使用this关键字非常有用，这样对公共的构造器代码部分只编写一次即可。
+
+#### 初始代码块
+
+前面已经讲过的初始化数据域的方法
+
+- 在构造器中设置值
+- 在声明中赋值
+
+除了这两种，Java还有第三种机制，称为`初始化块（initializetion block）`。在类的声明中，可以包含多个代码块。只要构造类的对象，这些块就会被执行。
+
+```java
+class Employee
+{
+    private static int nextId;
+
+    private int id;
+    private String name;
+    private double salary;
+
+    // 对象初始化块
+    {
+        id = nextId;
+        nextId ++；
+    }
+    public Employee(String n, double s){
+        name = n;
+        salary = s;
+    }
+    public Employee(){
+        name = "";
+        salary = 0;
+    }
+    ...
+}
+```
+
+在这个示例中，无论使用哪个构造对象，id域都在对象初始化块中被初始化。首先运行初始化块，然后才运行构造器的主体部分。
+
+除了初始化块，在后面学会static静态后，还有一个静态的初始化块
+
+```java
+static
+{
+    // code.
+}
+```
+
+在类第一次加载的时候，将会进行静态域的初始化。与实例域一样，除非将它们显式的设置成其他值，否则默认的初始值是0，false或null。所有的静态初始化语句以及静态初始化块都将依照类的定义顺序执行。
+
+示例代码
+
+```java
+import java.util.*;
+
+public class ConstructorTest {
+
+    public static void main(String[] args) {
+        Employee[] staff = new Employee[3];
+
+        staff[0] = new Employee("Tom",40000);
+        staff[1] = new Employee(60000);
+        staff[2] = new Employee();
+
+        for (Employee e: staff){
+            System.out.println("name=" + e.getName() + ", id=" + e.getId() + ", salary=" + e.getSalary());
+        }
+
+    }
+}
+
+class Employee{
+    private static int nextId;
+
+    private int id;
+    private String name = "";
+    private double salary;
+
+    // static initialization block
+    static
+    {
+        Random generator = new Random();
+        nextId = generator.nextInt(10000);
+
+    }
+
+    {
+        id = nextId;
+        nextId ++;
+    }
+
+    public Employee(String n, double s)
+    {
+        name = n;
+        salary = s;
+    }
+
+    public Employee(double s)
+    {
+        this("Employee #" + nextId, s);
+    }
+
+    public Employee()
+    {
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+}
+```
+
 ### 局部变量
 
 如果在成员方法内定义一个变量，那么这个变量被成为局部变量。
@@ -333,7 +538,7 @@ public String getName(){
 
 ### 对象的创建
 
-对象可以认为是在一类事务中抽象出某一个特例，可以通过这个特例来处理这类事物出现的问题。 
+对象可以认为是在一类事务中抽象出某一个特例，可以通过这个特例来处理这类事物出现的问题。
 
 在Java语言中通过`new`操作符来创建对象。
 
@@ -369,6 +574,7 @@ public class CreateObject{
 每个对象都有生命周期，当对象的生命周期结束时，分配给该对象的内存地址会被回收。
 
 何种对象会被Java虚拟机视为垃圾
+
 - 对象引用超过其作用范围，这个对象将被视为垃圾。
 - 将对象复制为null
 
@@ -407,6 +613,7 @@ public class HelloWorld{
 ```
 
 注意：
+
 1. 同一个类的不同实例对象，共用同一个静态变量，如果一个类将其变更，另一个类的静态变量也会变更。
 2. 静态成员属于整个类，当系统第一次使用该类时，就会为其分配内存空间直到该类被卸载才会进行资源回收！
 
@@ -456,7 +663,8 @@ public class StaticTest{
     }
 }
 ```
-这里需要比较一下静态代码块`static{}`和代码块`{}`。晚点来补充。
+
+这里需要比较一下静态代码块`static{}`和代码块`{}`。参考[初始代码块](#初始代码块)。
 
 ## 类的主方法
 
@@ -469,10 +677,12 @@ public static void main(String[] agrs){
 ```
 
 在主方法的定义中可以看到一下特性
+
 1. 主方法是静态的，所有如要直接在主方法中调用其他方法，则该方法必须也是静态的。
 2. 主方法没有返回值。
-3. 主方法的形参为数组。其中args[0]~args[n]，分别代表程序的第1个参数到第n+1ge参数，可以使用args.length获取参数个数。 
+3. 主方法的形参为数组。其中args[0]~args[n]，分别代表程序的第1个参数到第n+1ge参数，可以使用args.length获取参数个数。
 
+mian方法不对任何对象进行操作。事实上，在启动程序时还没有任何对象。静态方法将执行并创建程序所需要的对象。
 
 ## 类设计技巧
 
@@ -483,3 +693,67 @@ public static void main(String[] agrs){
 - 将职责过多的类进行分解
 - 类名和方法名要能够体现它们的职责
 - 优先使用不可变的类
+
+## 包
+
+Java允许使用`包（package）`将类组织起来。借助于包可以方便的组织自己的代码，并将自己的代码与别人的代码库分开。
+
+### 类的导入
+
+#### 在每个类名之前添加完整的包名
+
+```java
+java.time.LocalDate today = java.time.locakDate.now();
+```
+
+#### 使用import语句
+
+```java
+import java.util.*;
+```
+
+不使用前缀还可以指定具体的导入类
+
+```java
+import java.time.LoacalDate;
+```
+
+### 静态导入
+
+import语句不仅可以导入类，还增加了导入静态方法和静态域的功能。
+例如
+
+```java
+import static java.lang.System.*;
+// 就可以使用System类的静态方法和静态域，而不必加类名前缀
+out.println("Hello World"); // i.e., System.out
+exit(0); // i.e., System.exit
+```
+
+另外，还可以导入特定的方法或域
+
+```java
+import static java.lang.System.out;
+```
+
+不太建议这种简写形式，这种编写形式不利于代码的清晰度。
+
+### 将类放入包中
+
+要想将一个类放入包中，就必须将包的名字放在源文件的开头，包中定义类的代码之前
+
+```java
+package com.exaple.corejava;
+
+public class Employee{
+    ...
+}
+```
+
+### 包作用域
+
+暂略
+
+### 类路径
+
+暂略
