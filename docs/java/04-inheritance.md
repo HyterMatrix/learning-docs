@@ -37,7 +37,7 @@ public Manager(String name, double salary, int year, int month, int day){
 
 这里的关键字`super`具有不同的含义。
 
-`super(n, s, year, month, day); ` 是调用超类Employee中含有n, s, year, month, day参数的构造器的简写形式。
+`super(n, s, year, month, day);` 是调用超类Employee中含有n, s, year, month, day参数的构造器的简写形式。
 
 因为子类的构造器不能访问超类的私有域，所以必须利用超类的构造器对这部分私有域进行初始化，我们可以通过super实现对超类构造器的调用。使用super调用构造器的语句必须是子类构造器的第一条语句。
 
@@ -77,6 +77,7 @@ public class Employee
     ...
 }
 ```
+
 将方法或类声明为final主要的目的是：确保它们不会在子类中改变语义。
 
 ### 强制类型转换
@@ -87,6 +88,41 @@ public class Employee
 double x = 3.405;
 int nx = (int) x;
 ```
+
+对象引用的转换语法与数值表达式的类型转换类似，仅需要用一对圆括号将目标类名括起来，并放置在需要转换的对象引用之前就可以了。
+
+```java
+Manager boss = (Manager) staff[0];
+```
+
+进行类型转换的唯一原因是：在暂时忽视对象的实际类型之后，使用对象的全部功能。
+
+在进行类型转换之前，先查看一下是否能够成功的转换。这个操作很简单的使用`instanceof操作符`就可以
+
+```java
+if(staff[1] instanceof Manaager){
+    boss = (Manager) staff[1];
+}
+```
+
+如果这个类型转换不可能成功，编译器就不会进行这个转换。例如下面这个转换：
+
+```java
+String c = (String) staff[1];
+```
+
+将会产生编译错误，这是因为String不是Employee的子类
+
+综上所述
+
+- 只能再继承层次内进行类型转换
+- 在将超类转换成子类之前，应该使用instanceof进行检查
+
+注意 如果x为null， `x instanceof C` 不会产生异常，只会返回false。之所以这样处理是因为null没有引用任何对象，当然也不会应用C类型的对象。
+
+### 抽象类
+
+使用`abstract关键字`
 
 ## Object:所有类的超类
 

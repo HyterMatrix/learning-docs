@@ -32,6 +32,9 @@ module.exports = {
                 text: 'Python系列',
                 items: [
                     { text: 'Python', link: '/python/' },
+                    { text: 'Python模块', link: '/python-model/' },
+                    { text: 'Django', link: '/django/' },
+                    { text: 'Scarpy', link: '/python-scarpy/' },
                   ]
             },
             { text: '博客', link: 'https://hyter.me/' },
