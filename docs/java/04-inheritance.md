@@ -194,6 +194,8 @@ if(!(otherObject instanceof Employee)) return false;
 
 详情暂略。参考《卷I》p168
 
+### 
+
 ## 泛型数组列表
 
 ## 对象包装器与自动装箱
