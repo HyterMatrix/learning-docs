@@ -124,7 +124,75 @@ String c = (String) staff[1];
 
 使用`abstract关键字`
 
+### 受保护访问
+
+在之前了解的，最好将类中的域标记为`private`，而方法标记为`public`。任何声明为private的内容对其他类都是不可见的。这个对子类来说也是完全适用，即子类也不能访问超类的私有域。
+
+而然有些时候，喜欢超类中的某些方法允许被子类访问，或允许子类的方法访问超类的某个域。为此需要将这些方法或域声明为`protected`.例如，如果将超类Employee中的hireDay声明为`protected`，而不是私有的，Manager中的方法就能直接访问它。
+
+受保护的方法更具有实际意义。如果需要限制某个方法的使用，就可以将它声明为protected。这表明子类的道信任，可以正确的使用这个方法，而其他类不行。
+
+> 事实上，Java中受保护部分对所有子类以及同一个包中的所有其他类都可见。
+
+Java用于控制可见性的4个访问修饰符
+
+- 仅对本类可见 --- private
+- 对所有类可见 --- public
+- 对本包和多有子类可见 --- protected
+- 对本报可见 --- 默认（很遗憾），不需要修饰符
+
 ## Object:所有类的超类
+
+Object类是Java中所有类的始祖，在Java中每个类都是有它扩展而来。但是并不需要这样写：
+
+```java
+public class Employee extends Object
+```
+
+如果没有明确指出超类，Object就被分为是这个类的超类。由于在Java中，每个类都是由Object类扩展而来，所有，熟悉这个类提供的所有服务十分重要。
+
+可以是用Object类型的变量引用任何类型的对象
+
+```java
+Object obj = new Employee("Harry Hacker", 35000);
+```
+
+当然，Object类型的变量只能用于作为各种值的通用持有者。要相对其中的内容进行具体的操作，还需要清楚对象的原始类型，并进行相应的类型转换：
+
+```java
+Employee e = (Employee) obj;
+```
+
+在Java中只有`基本类型（primitive types）`不是对象，例如，数值、字符和布尔类型的值都不是对象。
+
+所有的数组类型，不管是对象数组还是基本类型的数组都扩展了Object类
+
+```java
+Employee staff = new Employee[10];
+obj = staff; // ok
+obj = new int[10]; // ok
+```
+
+### equals 方法
+
+Object类中的`equals`方法用于检测一个对象是否等于另一个对象。在Object类中，这个方法将判断两个对象是否具有相同的引用。如果两个对象具有相同的引用，它们一定是相等的。
+
+### 相等测试与继承
+
+如果隐式和显示的参数不属于同一个类，equals方法将如何处理呢？这是一个很有争议的问题。如果发现不匹配，equalse方法就会返回false。但是，许多程序员却喜欢使用instanceof进行检测
+
+```java
+if(!(otherObject instanceof Employee)) return false;
+```
+
+这样做不但没有解决otherObject是子类的情况，并且还有可能会招致一些麻烦。这就是建议不要使用这种处理方式的原因所在，Java语言规范要求equals方法具有下面的特性
+
+1. 自反性：对于任何非空引用x，x.equalse(x)应该返回true。
+2. 对称性：对于任何引用x和y，当且仅当y.equals(x)返回true，x.equals(y)也应该返回true。
+3. 传递性：对于任何引用x、y和z，如果x.equals(y)返回true，y.equals(z)返回true,那么，x.equals(z)也应该返回true。
+4. 一致性：如果x和y引用的对象没有发生变化，返回调用x.equals(y)应该返回同样的结果。
+
+详情暂略。参考《卷I》p168
 
 ## 泛型数组列表
 
