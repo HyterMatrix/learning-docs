@@ -1,6 +1,6 @@
 module.exports = {
-    title: '学习文档',
-    description: '自学记录的文档',
+    title: '我的学习笔记',
+    description: '千里之行，始于足下',
     themeConfig: {
         repo: 'HyterMatrix/learning-docs',
         repoLabel: '查看源码',

@@ -196,6 +196,18 @@ if(!(otherObject instanceof Employee)) return false;
 
 ### hashCode方法
 
+`散列码(hash code)`是由对象导出的一个整型值。散列码是没有规律的。如果x和y是两个不同的对象，`x.hashCode()`和`y.hashCode()`基本上不会相同。
+
+String类使用下列算法计算散列码
+
+```java
+int hash = 0;
+for(int i = 0; i< length(); i++){
+    hash = 31 * hash + charAt(i);
+}
+```
+
+
 ## 泛型数组列表
 
 ## 对象包装器与自动装箱

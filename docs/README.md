@@ -1,5 +1,5 @@
 ---
-title: IT自动书记笔记本
+title: 我的学习笔记
 home: true
 heroImage: /index2.png
 actionText: 开始
