@@ -1,6 +1,7 @@
 ---
-title: 学习文档
+title: IT自动书记笔记本
 home: true
+heroImage: /index2.png
 actionText: 开始
 actionLink: /java/
 features:
@@ -12,5 +13,9 @@ features:
   details: 世界上最好的语言
 - title: Node.js
   details: 
+- title: Vue.js
+  details:
+- title: Electron
+  details:
 footer: MIT Licensed | Copyright © 2018-present HyterMatrix
 ---
