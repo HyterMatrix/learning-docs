@@ -217,7 +217,112 @@ for(int i = 0; i< length(); i++){
 
 由于hashCode方法定义在Object类中，因此每个对象都有一个默认的散码列，其值为对象的存储地址。
 
+Equals与hashCode的定义必须一致：如果x.equals(y)返回ture，那么x.hashCode()就必须与y.hashCode()具有相同的值。
 
+**注意** 如果存在数组类型的域，那么可以使用静态方法的`Arrays.hashCode`方法计算一个散列码，这个散列码由数组元素的散列码组成。
+
+#### <Badge text="API" type="prim"/>java.util.Object 1.0
+
+- int hashCode()
+
+#### <Badge text="API" type="prim"/>java.util.Object 7
+
+- static int hash(Object... object)
+- static int hashCode(Object a)
+
+#### <Badge text="API" type="prim"/>java.lang.(Integer|Long|Short|Byte|Double|Float|Character|Boolean)
+
+- static int hashCode((Integer|Long|Short|Byte|Double|Float|Character|Boolean) value)
+
+#### <Badge text="API" type="prim"/>java.util.Arrays 1.2
+
+- static int hashCode(type[] a)
+
+### toString方法
+
+在Object中还有一个重要的方法，就是toString方法，他用于返回对象值的字符串。举个例子，Point类的toString方法将返回下面这样的字符串
+
+```java
+java.awt.Point[X=10,Y=10]
+```
+
+绝大多数（但不是全部）的toSting方法都遵循这样的格式：类的名字，随后是一堆方括号括起来的阈值。下面是Employee类中的toString方法的实现“
+
+```java
+public String toString(){
+    retrun "Employee[name=" + name
+    + ",salary=" + salary
+    + ",hireDay=" + hireDay + "]";
+}
+```
+
+实际上，还可以设计的得更好一些。组好通过调用`getClass.getName()`获得类名的字符串，而不要将类名硬加到toString方法中
+
+```java
+public String toString(){
+    retrun getClass().getName() + "[name=" + name
+    + ",salary=" + salary
+    + ",hireDay=" + hireDay + "]";
+}
+```
+
+toString方法也可以供子类调用
+
+当然，设计子类的程序员也应该定义自己的toString方法，并将子类的域描述添加进去。如果超类使用了`getClass().getName()`,那么子类只要调用`super.toString()`就可以了。例如
+
+```java
+public class Manager extends Employee{
+    ...
+    public String toString(){
+        return super.toString + "[bonus=" + bonus + "]";
+    }
+}
+```
+
+现在，Manager对象将打印输出如下所示的内容
+
+```java
+Manager[name=...,salary=...,hisrDay=...][bonus=...]
+```
+
+随处可见的toString方法的主要原因是：只要对象与一个字符串通过操作符”+“ 连接起来，Java编译就会自动的调用toString方法，以便获得这个对象的字符串描述。
+
+如果x是任意一个对象，并调用
+
+```java
+System.out.println(x);
+```
+
+println方法就会直接调用`x.toString()`,并打印输出得到字符串。
+
+Object类定义了toString方法，用来打印输出对象所属的类名和散列码。例如
+
+```java
+System.out.println(System.out);
+// 将输出下面的类容
+java.io.PrintStream@610455d6
+```
+
+之所以等到这样的结果是应为PrintStream类的设计者没有覆盖toString方法。
+
+:::danger 警告
+令人烦恼的是，数组继承了object类的toString方法，数组类型将按照旧的格式打印。
+:::
+
+```java
+int[] luckyNumber = {2, 3, 5, 7
+String s2 = "" + luckyNumber;  
+// 生成的字符串结果为 "[I@511d50c0"(前缀[I 表明是一个整型数组)。修正的方式是调用静态方法Arrays.toStrig。
+String s3 = Arrays.toString(luckyNumber);
+// 生成的字符串为 [2, 3, 5, 7, 11, 13]
+// 要想打印多维数组则需要调用Arrys.deepToString方法。
+```
+
+toString方法是一种非常有用的吊事工具。在标准类库中，许多类都定义了toString方法，一边用户能够获得一些有关于对象状态的信息。
+
+:::tip 提示
+强烈建议为自定义的每一个类增加toString方法。
+:::
 
 ## 泛型数组列表
 
