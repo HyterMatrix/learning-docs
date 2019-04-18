@@ -452,7 +452,43 @@ for (int i = 0; i<staff.size(); i++){
 
 ### 类型化与原始数组列表的兼容性
 
+略
+
 ## 对象包装器与自动装箱
+
+有时，需要将int这样的基本类型转换为对象。所以有的基本类型都一个与之对应的类。例如，Integer类对应基本类型int。通常，这些类成为`包装器（warpper）`。这些对象包装器类拥有很多明显的名字：Integer、Long、Float、Double、Short、Byte、Character、Void和Boolean（前6个类派生于公共的超类Number）。对象包装器是不可变的，即一旦构造了包装器，就不允许更改包装在其中的值。同时，对象包装器类还是final，因此不能定义他们的子类。
+
+假设想定义一个整型数组列表。而尖括号中的类型参数不允许是基本类型，也就是说，不允许写成`ArrayList<int>`。这里就用到了Integer对象包装器类。我们可以声明一个Integer对象的数组列表。
+
+```java
+ArrayList<Integer> list = new ArrayList<>();
+```
+
+幸运的是，有一个很有用的特性，从而更加便于添加int类型的元素到`ArrayList<Integer>`中
+
+```java
+list.add(3);
+```
+
+将自动变换成
+
+```java
+list.add(Integer.valueOf(3));
+```
+
+这种变换称为`自动装箱（autoboxing）`。
+
+相反的，当一个Integer对象赋给一个int值时，将自动拆箱。也就是说，编译器执行下列语句：
+
+```java
+int n = list.get(i);
+```
+
+翻译成
+
+```java
+int n = list.get(i).intValue();
+```
 
 ## 参数数量可变的方法
 
