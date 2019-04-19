@@ -490,6 +490,38 @@ int n = list.get(i);
 int n = list.get(i).intValue();
 ```
 
+甚至在算术表达式中也能够自动的装箱和拆箱。
+
+大多数情况下，容易有一种假象，即基本类型与他们的对象包装器是一样的，只是它们的相等性不同。大家都知道，==运算符也可以应用与对象包装器对象，只不过检测的是对象是否指向同一个存储区域，因此，下面的比较通常不会成立：
+
+```java
+Integer a = 1000;
+Integer b = 1000;
+if (a == b) ...
+```
+
+然而，java实现却有可能让它成立。如果将经常出现的值包装到同一个对象中，这种比较就有可能成立。这种不确定的结果并不是我们锁希望的。解决这个问题的办法是在两个包装器对象比较时调用equals方法。
+
+关于自动装箱还有几点需要说明。
+
+首先，由于包装器类引用可以为null，所以自动装箱有可能会抛出一个NullPointerException异常：
+
+```java
+Integer n = null;
+System.out.println(2 * n); // Throws NullPointerException
+```
+
+另外，如果在一个条件表达式中混合使用Integer 和 Double类型，Integer值会拆箱，提升为double，再装箱为Double：
+
+```java
+Integer n = 1;
+Double x = 2.0;
+System.out.println(true? n:x);
+```
+
+最后强调一下，装箱和拆箱是编译器认可的，而不是虚拟机。编译器在生成类的字节码时，插入必要的方法调用。虚拟机只是执行了这些字节码。
+
+
 ## 参数数量可变的方法
 
 ## 枚举类
