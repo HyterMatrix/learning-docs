@@ -521,11 +521,125 @@ System.out.println(true? n:x);
 
 最后强调一下，装箱和拆箱是编译器认可的，而不是虚拟机。编译器在生成类的字节码时，插入必要的方法调用。虚拟机只是执行了这些字节码。
 
+使用数值对象包装器还有另一个好处。Java设计者发现，可以将某些基本方法放置再包装器中，例如，将一个数字字符串转换成数值。
+
 
 ## 参数数量可变的方法
 
+在Java SE 5.0 以前的版本中，每个Java方法都有固定数量的参数。然而，现在的版本提供了可以用可变的参数数量调用的方法（有时候称为“变参”方法）。
+
+```java
+public static double max(double... values){
+    double largest = Double.NEGATIVE_INFINITY;
+    for(double v: value) if(v>largest) largest = v;
+    return largest
+}
+```
+
+可以像下面这样调用方法
+
+```java
+double m = max(3.1, 40.4, -5);
+```
+
+其中的... 符号就是接受变参的符号。
+
 ## 枚举类
+
+前面已经介绍了如何定义枚举类型了。
+
+```java
+public enum Size{SMALL, MEDIUM, LARGE, EXTRA_LARGE };
+```
+
+实际上，这个声明定义的类型是一个类，他刚好有4个实例，在此尽量不要构造一个新对象。
+
+因此，在比较两个枚举类型的值时，永远不需要调用equals，而直接使用“==”就可以了。
+
+如果需要的话，可以在枚举类型中添加一些构造器、方法和域。当然，构造器只是在构造枚举常量的时候被调用。
+
+```java
+public enum Size{
+    SMALL("S"), MEDIUM("M"), LARGE("L"),EXTRA_LARGE("XL");
+
+    private String abbreviation;
+
+    private Size(String abbreviation) {this.abbreviation = abbreviation;}
+    public String getAbbreviation(){return abbreviation;}
+}
+```
+
+所有的枚举类型都是Enum类的子类。他们继承了这个类的许多方法，其中最有用的一个是toString，这个方法能返回枚举常量名。例如，Size.SMALL.toString()将返回字符串“SMALL”。
+
+toString的逆方法是静态方法valueOf。例如
+
+```java
+Size s = Enum.valueOf(Size.class, "SMALL");
+```
+
+将s设置成Size.SMALL。
+
+每个枚举类型都有一个静态的values方法， 他讲返回一个包含全部枚举值的数组。
+
+```java
+Size[] values = Size.values();
+```
+
+返回包含元素Size.SMALL，Size.MEDIUM，Size.LARGE和Size.EXTRA_LARGE的数组。
+
+ordinal方法返回enum声明中枚举常量的位置，位置从0开始计数。例如，Size.MEDIUM.ordinal()返回1。
+
+```java
+package enums;
+
+import java.util.Scanner;
+
+public class EnumTest {
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Enter an size:(SMALL, MEDIUM, LARGE, EXTRA_LARGE) ");
+        String input = in.next().toUpperCase();
+
+        Size size = Enum.valueOf(Size.class, input);
+        System.out.println("size = "+size);
+        System.out.println("abbreviation=" + size.getAbbreviation());
+        if (size == Size.EXTRA_LARGE)
+            System.out.println("Good job--you paid attention to the _.");
+    }
+}
+
+enum Size{
+    SMALL("S"), MEDIUM("M"), LARGE("L"), EXTRA_LARGE("XL");
+
+    private Size(String abbreviation){this.abbreviation = abbreviation;}
+    public String getAbbreviation(){ return  abbreviation; }
+
+    private String abbreviation;
+}
+
+```
 
 ## 反射
 
+`反射库（reflection library）`提供了一个非常丰富且精心设计的工具集，以便编写能够动态操作java代码的程序。这项功能被大量的应用于JavaBeans中，它是Java组件的体系结构。使用反射，Java可以支持VB用户习惯使用的工具。特别是在设计或运行中添加新类时，能够快速的应用开发工具动态的查询新添加类的能力。
+
+能够分析类能力的程序成为反射，反射机制的功能及其强大，反射可以用来
+
+- 在运行时分析类的能力。
+- 在运行时查看对象，例如编写一个toString方法供所有类使用。
+- 实现通用的数组操作代码。
+- 利用Method对象，这个对象很像C++中的函数指针。
+
+反射是一种功能强大且复杂的机制。使用它的主要人员是工具构造者，而不是应用程序员。
+
+暂略（《Java核心技术 卷 Ⅰ》 P190）
+
 ## 继承的设计技巧
+
+1. 将公共操作和域放在超类。
+2. 不要使用受保护的域。
+3. 使用继承实现“is-a”关系。
+4. 除非所有继承的方法都有意义，否则不要使用继承。
+5. 在覆盖方法时，不要改变预期的行为。
+6. 使用多态，而非类型信息。
+7. 不要过多的使用反射。
