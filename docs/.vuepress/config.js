@@ -57,6 +57,7 @@ module.exports = {
                 '02-java-basic',
                 '03-java-class-and-object',
                 '04-inheritance',
+                '05-interface-lambda-innerclass',
                 'QA']
             }],
             '/spring/': [{
