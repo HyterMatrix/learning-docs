@@ -145,3 +145,56 @@ lambda表达式是一个可传递的代码块，可以在以后执行一次货�
 
 ### 使用内部类访问对象状态
 
+### 内部类的特殊语法规则
+
+### 内部类是否有用、必要和安全
+
+### 局部内部类
+
+如果仔细的阅读以下TalkingClock示例代码就会发现，TimePrinter这个类名字只在start方法中创建这个类型的对象时使用了一次。
+
+当遇到这种情况时，可以在一个方法中定义局部类。
+
+```java
+public void start(){
+    class TimeParinter implements ActionListenter{
+        public void actionPerformed(ActionEvent event){
+            System.out.println("At the tone, the time is " + new Date());
+            if (beep) Toollkit.getDefaultToolkit().beep();
+        }
+    }
+    ActionListener listener = new TimePrinter();
+    Timer t = new Timer(interval, listener);
+    t.start();
+}
+```
+
+局部类不能用public或private访问说明符进行声明。呀的作用域被限定在声明这个局部类的块中。
+
+局部类有个有优势，即对外部世界可以完全地隐藏起来。即使TalkingClock类中的其他代码也不能访问他，除start方法之外，没有任何方法知道TimeParinter类的存在
+
+### 由外部方法访问变量
+
+与其他内部类相比较，局部类还有一个优点。它们不仅能访问包含它们的外部类，还可以访问局部变量。不过，那些局部变量必须事实上为final。这说明，他们一旦赋值就绝不会改变。
+
+下面是个典型的示例。这里，将TalkingClock构造器的参数interval和beep移至start方法中
+
+```java
+public void start(int interval, booleam beep){
+    class TimePriner implements ActionListener{
+        public void actionPerformed(ActionEvent event){
+           System.out.println("At the tone, the time is " + new Date());
+            if (beep) Toollkit.getDefaultToolkit().beep();
+        }
+    }
+    ActionListener listener = new TimePrinter();
+    Timer t = new Timer(interval, listener);
+    t.start();
+}
+```
+
+### 匿名内部类
+
+### 静态内部类
+
+## 代理
