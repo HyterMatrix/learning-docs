@@ -35,14 +35,28 @@ module.exports = {
                     { text: 'Python模块', link: '/python-model/' },
                     { text: 'Django', link: '/django/' },
                     { text: 'Scarpy', link: '/python-scarpy/' },
+                    { text: '每周一练', link: '/python-scarpy/' },
                   ]
             },
-            { text: '博客', link: 'https://hyter.me/' },
             {
-                text: '备用地址',
+                text: '博客',
                 items: [
+                    { text: '博客', link: 'https://hyter.me/' },
                     { text: '备用博客地址', link: 'https://HyterMatrix.coding.me/blog' },
                     { text: '备用文档地址', link: 'https://HyterMatrix.coding.me/learning-docs' }
+                  ]
+            },
+            {
+                text: '项目',
+                items: [
+                    { text: 'Java', items: [
+                            { text: '每周一练', link: '/java-project/' },
+                        ] 
+                    },
+                    { text: 'Python', items: [
+                        { text: '每周一练', link: '/python-project/' },
+                    ] 
+                },
                   ]
             },
             { text: '更新记录', link: '/update/' },
