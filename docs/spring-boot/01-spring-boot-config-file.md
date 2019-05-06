@@ -1,4 +1,4 @@
-# 第1章 Spring Boot 配置文件
+# 第一章 Spring Boot 配置文件
 ## 配置文件
 SpringBoot使用一个全局的配置文件，配置文件名是固定的；
 

@@ -1,5 +1,7 @@
-# 第0章 Spring Boot 入门
+# 序 Spring Boot 入门
+
 ## Spring Boot 简介
+
 SpringBoot 来简化Spring应用开发，约定大于配置，去繁从简，just run就能创建一个独立的，产品级别的应用。
 > 简化Spring应用开发的一个框架；
 >
@@ -8,6 +10,7 @@ SpringBoot 来简化Spring应用开发，约定大于配置，去繁从简，jus
 > J2EE开发的一站式解决方案；
 
 ## 优点
+
 - 快速创建独立运行的Spring项目以及与主流框架集成
 - 使用嵌入式Servlet容器，应用无需打成WAR包
 - starters自动依赖与版本管理
@@ -17,6 +20,7 @@ SpringBoot 来简化Spring应用开发，约定大于配置，去繁从简，jus
 - 与云计算的天然集成
 
 ## 微服务
+
 2014, martin fowler
 
 微服务：架构风格
@@ -60,6 +64,7 @@ SpringBoot 来简化Spring应用开发，约定大于配置，去繁从简，jus
   </properties>
 </profile>
 ```
+
 ### IDEA设置
 
 整合maven进来；
@@ -96,6 +101,7 @@ public class HelloWorldMainApplication {
     }
 }
 ```
+
 ### 编写相关的Controller、Service
 
 ```java
@@ -155,6 +161,7 @@ Spring Boot的版本仲裁中心；
 以后我们导入依赖默认是不需要写版本；（没有在dependencies里面管理的依赖自然需要声明版本号）
 
 #### 导入的依赖
+
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>
@@ -167,7 +174,6 @@ Spring Boot的版本仲裁中心；
 spring-boot-starter:spring-boot场景启动器：帮我们导入了web模块正常运行所依赖的组件；
 
 Spring Boot将所有的功能场景都抽取出来，做成一个个的starters（启动器），只需要在项目里面引入这些starter相关场景的所有依赖都会导入进来。要用什么功能就导入什么场景的启动器
-
 
 ### 主程序类，主入口类
 
@@ -189,8 +195,6 @@ public class HelloWorldMainApplication {
 
 @**SpringBootApplication**:    Spring Boot应用标注在某个类上说明这个类是SpringBoot的主配置类，SpringBoot就应该运行这个类的main方法来启动SpringBoot应用；
 
-
-
 ```java
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -211,8 +215,6 @@ public @interface SpringBootApplication {
 ​		@**Configuration**:配置类上来标注这个注解；
 
 ​			配置类 -----  配置文件；配置类也是容器中的一个组件；@Component
-
-
 
 @**EnableAutoConfiguration**：开启自动配置功能；
 

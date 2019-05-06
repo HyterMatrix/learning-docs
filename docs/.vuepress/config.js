@@ -22,6 +22,7 @@ module.exports = {
                     { text: 'Spring', link: '/spring/' },
                     { text: 'SpringBoot', link: '/spring-boot/' },
                     { text: 'SpringCloud', link: '/spring-cloud/' },
+                    { text: '每周一练', link: '/python-scarpy/' },
                     { text: '文档', items: [
                             { text: '阿里巴巴Java开发手册', link: 'http://click.aliyun.com/m/1000019584/' },
                         ] 
@@ -49,14 +50,11 @@ module.exports = {
             {
                 text: '项目',
                 items: [
-                    { text: 'Java', items: [
-                            { text: '每周一练', link: '/java-project/' },
+                    { text: '每周一练', items: [
+                            { text: 'java', link: '/java-project/' },
+                            { text: 'python', link: '/python-project/' },
                         ] 
                     },
-                    { text: 'Python', items: [
-                        { text: '每周一练', link: '/python-project/' },
-                    ] 
-                },
                   ]
             },
             { text: '更新记录', link: '/update/' },
