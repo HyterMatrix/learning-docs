@@ -50,9 +50,8 @@ module.exports = {
             {
                 text: '项目',
                 items: [
-                    { text: '每周一练', items: [
-                            { text: 'java', link: '/java-project/' },
-                            { text: 'python', link: '/python-project/' },
+                    { text: '', items: [
+                            { text: '第三方公众号管理平台', link: '/java-project/' },
                         ] 
                     },
                   ]
@@ -77,6 +76,7 @@ module.exports = {
                 collapsable: false,
                 children:[
                     '',
+                    'spring-annotation'
                 ]
             }],
             '/spring-boot/': [{
