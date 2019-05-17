@@ -2,8 +2,8 @@ module.exports = {
     title: '我的学习笔记',
     description: '千里之行，始于足下',
     themeConfig: {
-        repo: 'HyterMatrix/learning-docs',
-        repoLabel: '查看源码',
+        // repo: 'HyterMatrix/learning-docs',
+        // repoLabel: '查看源码',
         // 假如你的文档仓库和项目本身不在一个仓库：
         docsRepo: 'HyterMatrix/learning-docs',
         // 假如文档不是放在仓库的根目录下：
@@ -48,6 +48,30 @@ module.exports = {
                   ]
             },
             {
+                text: '在线文档',
+                items: [
+                    { text: 'Vue', link: 'https://cn.vuejs.org/v2/api/' },
+                    { text: 'Vuex', link: 'https://vuex.vuejs.org/zh/api/#vuex-store' },
+                    { text: 'Axios', link: 'https://www.kancloud.cn/yunye/axios/234845' }
+                  ]
+            },
+            {
+                text: '在线工具',
+                items: [
+                    { text: '在线服务',items:[
+                        { text: 'Boot CDN', link: 'https://www.bootcdn.cn/'},
+                        { text: '微信 CDN', link: 'https://qydev.weixin.qq.com/cdn/cdnjs.html'},
+                        { text: '奇舞团 CDN', link: 'https://cdn.baomitu.com/'},
+                    ]},
+                    { text: '开源镜像', items: [
+                        { text: '阿里', link: 'https://opsx.alibaba.com/' },
+                        { text: '清华', link: 'https://mirrors.tuna.tsinghua.edu.cn/' },
+                        { text: 'Azure', link: 'https://mirror.azure.cn/' },
+                        ] 
+                    },
+                  ]
+            },
+            {
                 text: '项目',
                 items: [
                     { text: '', items: [
@@ -56,7 +80,7 @@ module.exports = {
                     },
                   ]
             },
-            { text: '更新记录', link: '/update/' },
+            // { text: '更新记录', link: '/update/' },
         ],
         sidebar: {
             '/java/': [{

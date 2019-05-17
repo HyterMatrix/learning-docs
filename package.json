@@ -3,7 +3,7 @@
     "vuepress": "^0.14.11"
   },
   "dependencies": {
-    "webpack-dev-middleware": "^3.6.2"
+    "webpack-dev-middleware": "^3.7.0"
   },
   "scripts": {
     "docs:build": "npx vuepress build docs",

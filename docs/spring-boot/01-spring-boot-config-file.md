@@ -1,5 +1,7 @@
 # 第一章 Spring Boot 配置文件
+
 ## 配置文件
+
 SpringBoot使用一个全局的配置文件，配置文件名是固定的；
 
 - application.properties
@@ -9,32 +11,33 @@ SpringBoot使用一个全局的配置文件，配置文件名是固定的；
 
 YAML（YAML Ain't Markup Language）
 
-​	YAML  A Markup Language：是一个标记语言
+​YAML  A Markup Language：是一个标记语言
 
-​	YAML   isn't Markup Language：不是一个标记语言；
+​YAML   isn't Markup Language：不是一个标记语言；
 
 标记语言：
 
-​	以前的配置文件；大多都使用的是  **xxxx.xml**文件；
+​以前的配置文件；大多都使用的是  **xxxx.xml**文件；
 
-​	YAML：**以数据为中心**，比json、xml等更适合做配置文件；
+​YAML：**以数据为中心**，比json、xml等更适合做配置文件；
 
-​	YAML：配置例子
+​YAML：配置例子
 
 ```yaml
 server:
   port: 8081
 ```
 
-​	XML：
+​XML：
 
 ```xml
 <server>
-	<port>8081</port>
+  <port>8081</port>
 </server>
 ```
 
 ## YAML语法
+
 ### 基本语法
 
 k:(空格)v：表示一对键值对（空格必须有）；
@@ -53,7 +56,7 @@ server:
 
 #### 字面量：普通的值（数字，字符串，布尔）
 
-​	k: v：字面直接来写；
+​k: v：字面直接来写；
 
 ​		字符串默认不用加上单引号或者双引号；
 
@@ -65,18 +68,16 @@ server:
 
 ​				name:   ‘zhangsan \n lisi’：输出；zhangsan \n  lisi
 
-
-
 #### 对象、Map（属性和值）（键值对）：
 
-​	k: v：在下一行来写对象的属性和值的关系；注意缩进
+​k: v：在下一行来写对象的属性和值的关系；注意缩进
 
 ​		对象还是k: v的方式
 
 ```yaml
 friends:
-		lastName: zhangsan
-		age: 20
+    lastName: zhangsan
+    age: 20
 ```
 
 行内写法：
@@ -84,8 +85,6 @@ friends:
 ```yaml
 friends: {lastName: zhangsan,age: 18}
 ```
-
-
 
 #### 数组（List、Set）：
 
@@ -149,15 +148,128 @@ public class Person {
 
 ```
 
-
-
 我们可以导入配置文件处理器，以后编写配置就有提示了
 
 ```xml
 <!--导入配置文件处理器，配置文件进行绑定就会有提示-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-configuration-processor</artifactId>
-			<optional>true</optional>
-		</dependency>
+<dependency>
+  <groupId>org.springframework.boot</groupId>
+  <artifactId>spring-boot-configuration-processor</artifactId>
+  <optional>true</optional>
+</dependency>
 ```
+
+### properties配置文件在idea中默认utf-8可能会乱码
+
+调整
+
+![idea配置乱码](image/1558075563785.jpg)
+
+### @Value获取值和@ConfigurationProperties获取值比较
+
+|            | @ConfigurationProperties | @Value |
+| ---------- | ------------------------ | ------ |
+| 功能| 批量注入配置文件中的属性 | 一个个指定 |
+| 松散绑定（松散语法） | 支持| 不支持 |
+| SpEL| 不支持| 支持|
+| JSR303数据校验 | 支持 | 不支持 |
+| 复杂类型封装 | 支持 | 不支持 |
+
+配置文件yml还是properties他们都能获取到值；
+
+如果说，我们只是在某个业务逻辑中需要获取一下配置文件中的某项值，使用@Value；
+
+如果说，我们专门编写了一个javaBean来和配置文件进行映射，我们就直接使用@ConfigurationProperties；
+
+### 配置文件注入值数据校验
+
+```java
+@Component
+@ConfigurationProperties(prefix = "person")
+@Validated
+public class Person {
+
+    /**
+     * <bean class="Person">
+     *      <property name="lastName" value="字面量/${key}从环境变量、配置文件中获取值/#{SpEL}"></property>
+     * <bean/>
+     */
+
+   //lastName必须是邮箱格式
+    @Email
+    //@Value("${person.last-name}")
+    private String lastName;
+    //@Value("#{11*2}")
+    private Integer age;
+    //@Value("true")
+    private Boolean boss;
+
+    private Date birth;
+    private Map<String,Object> maps;
+    private List<Object> lists;
+    private Dog dog;
+```
+
+### @PropertySource&@ImportResource&@Bean
+
+@**PropertySource**：加载指定的配置文件；
+
+```java
+/**
+ * 将配置文件中配置的每一个属性的值，映射到这个组件中
+ * @ConfigurationProperties 告诉SpringBoot将本类中所有属性和配置文件相关的配置进行绑定
+ *      prefix = "person" ：配置文件中哪个下面的所有属性进行一一映射
+ * @ConfigurationProperties(prefix = "person") 默认从全局配置文件中获取值
+ *
+ *      只有这个组件是容器中的组件，才能使用容器提供的@ConfigurationProperties功能
+ */
+@PropertySource(value = {"classpath:person.properties"})
+@Component
+@ConfigurationProperties(prefix = "person")
+@Validated
+public class Person {
+
+    // @Value("${person.last-name}")
+    // lastName必须是邮箱格式
+//    @Email
+    private String lastName;
+    // @Value("#{10*11}")
+    private Integer age;
+    // @Value("true")
+    private Boolean boss;
+    private Date birth;
+
+    private Map<String, Object> maps;
+    private List<Object> lists;
+    private Dog dog;
+```
+
+@**ImportResource**：导入Spring的配置文件，让配置文件里面的内容生效；
+
+Spring Boot里面没有Spring的配置文件，我们自己编写的配置文件，也不能自动识别；
+
+想让Spring的配置文件生效，加载进来；@**ImportResource**标注在一个配置类上
+
+```java
+@ImportResource(locations = {"classpath:beans.xml"})
+导入Spring的配置文件让其生效
+```
+
+不来编写Spring的配置文件
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="helloService" class="com.atguigu.springboot.service.HelloService"></bean>
+</beans>
+```
+
+SpringBoot推荐给容器中添加组件的方式；推荐使用全注解的方式
+
+1、配置类 **@Configuration** ------>Spring配置文件
+
+2、使用 **@Bean** 给容器中添加组件
