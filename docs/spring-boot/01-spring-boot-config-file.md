@@ -296,3 +296,4 @@ public class MyAppConfig {
 
 ## 配置文件占位符
 
+### 随机数
