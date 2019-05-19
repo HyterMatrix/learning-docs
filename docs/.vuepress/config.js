@@ -108,7 +108,8 @@ module.exports = {
                 collapsable: false,
                 children:[
                     '',
-                    '01-spring-boot-config-file'
+                    '01-spring-boot-config-file',
+                    '02-spring-boot-logging'
                 ]
             }],
             '/spring-cloud/': [{
@@ -144,7 +145,7 @@ module.exports = {
         },
 
         lastUpdated: '上次更新',
-        sidebarDepth: 2
+        sidebarDepth: 1
     },
     markdown:{
         lineNumbers: true
