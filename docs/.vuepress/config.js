@@ -109,7 +109,8 @@ module.exports = {
                 children:[
                     '',
                     '01-spring-boot-config-file',
-                    '02-spring-boot-logging'
+                    '02-spring-boot-logging',
+                    '03-spring-boot-web'
                 ]
             }],
             '/spring-cloud/': [{
