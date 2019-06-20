@@ -3,7 +3,7 @@ title: 我的学习笔记
 home: true
 heroImage: /index2.png
 actionText: 全栈工程师 →
-actionLink: /java/
+actionLink: /java/java-basics/
 features:
 - title: Java
   details: 

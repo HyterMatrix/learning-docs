@@ -16,28 +16,35 @@ module.exports = {
         editLinkText: '帮助我们改善此页面！',
         nav: [
             {
-                text: 'Java系列',
+                text: 'Java',
                 items: [
-                    { text: 'Java', link: '/java/' },
-                    { text: 'Spring', link: '/spring/' },
-                    { text: 'SpringBoot', link: '/spring-boot/' },
-                    { text: 'SpringCloud', link: '/spring-cloud/' },
-                    { text: '每周一练', link: '/python-scarpy/' },
+                    { text: 'Java', link: '/java/java-basics/' },
+                    { text: 'Spring', link: '/java/spring/' },
+                    { text: 'SpringBoot', link: '/java/spring-boot/' },
+                    { text: 'SpringCloud', link: '/java/spring-cloud/' },
+                    { text: '练习', link: '#' },
                     { text: '文档', items: [
                             { text: '阿里巴巴Java开发手册', link: 'http://click.aliyun.com/m/1000019584/' },
-                        ] 
+                        ]
                     },
                   ]
             },
             {
-                text: 'Python系列',
+                text: 'Python',
                 items: [
-                    { text: 'Python', link: '/python/' },
-                    { text: 'Python模块', link: '/python-model/' },
-                    { text: 'Django', link: '/django/' },
-                    { text: 'Scarpy', link: '/python-scarpy/' },
-                    { text: '每周一练', link: '/python-scarpy/' },
+                    { text: 'Python', link: '/python/python-basics/' },
+                    { text: 'Python模块', link: '/python/python-model/' },
+                    { text: 'Django', link: '/python/django/' },
+                    { text: 'Scarpy', link: '/python/python-scarpy/' },
+                    { text: '练习', link: '#' },
                   ]
+            },
+            {
+                text: 'PHP',
+                items: [
+                    { text: 'PHP基础', link: '/php/php-basics/' },
+                    { text: 'PHP模块', link: '/php/php-model/' },
+                ]
             },
             {
                 text: '博客',
@@ -67,7 +74,7 @@ module.exports = {
                         { text: '阿里', link: 'https://opsx.alibaba.com/' },
                         { text: '清华', link: 'https://mirrors.tuna.tsinghua.edu.cn/' },
                         { text: 'Azure', link: 'https://mirror.azure.cn/' },
-                        ] 
+                        ]
                     },
                   ]
             },
@@ -76,14 +83,14 @@ module.exports = {
                 items: [
                     { text: '', items: [
                             { text: '第三方公众号管理平台', link: '/java-project/' },
-                        ] 
+                        ]
                     },
                   ]
             },
             // { text: '更新记录', link: '/update/' },
         ],
         sidebar: {
-            '/java/': [{
+            '/java/java-basics/': [{
                 title: 'Java笔记',
                 collapsable: false,
                 children:[
@@ -95,7 +102,7 @@ module.exports = {
                 '05-interface-lambda-innerclass',
                 'QA']
             }],
-            '/spring/': [{
+            '/java/spring/': [{
                 title: '笔记',
                 collapsable: false,
                 children:[
@@ -103,7 +110,7 @@ module.exports = {
                     'spring-annotation'
                 ]
             }],
-            '/spring-boot/': [{
+            '/java/spring-boot/': [{
                 title: 'SpringBoot',
                 collapsable: false,
                 children:[
@@ -113,7 +120,7 @@ module.exports = {
                     '03-spring-boot-web'
                 ]
             }],
-            '/spring-cloud/': [{
+            '/java/spring-cloud/': [{
                 title: '笔记',
                 collapsable: false,
                 children:[
@@ -134,6 +141,9 @@ module.exports = {
                     ''
                 ]
             }],
+            '/php/php-model/': [
+                ''
+            ],
 
         },
         serviceWorker: {
