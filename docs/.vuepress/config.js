@@ -158,7 +158,7 @@ module.exports = {
         lastUpdated: '上次更新',
         sidebarDepth: 1
     },
-    markdown:{
+    extendMarkdown(md){
         lineNumbers: true
     },
     base:'/learning-docs/',
