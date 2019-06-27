@@ -34,6 +34,7 @@ module.exports = {
                 items: [
                     { text: 'Python', link: '/python/python-basics/' },
                     { text: 'Python模块', link: '/python/python-model/' },
+                    { text: 'Python代码段', link: '/python/python-code-block/' },
                     { text: 'Django', link: '/python/django/' },
                     { text: 'Scarpy', link: '/python/python-scarpy/' },
                     { text: '练习', link: '#' },
@@ -44,6 +45,7 @@ module.exports = {
                 items: [
                     { text: 'PHP基础', link: '/php/php-basics/' },
                     { text: 'PHP模块', link: '/php/php-model/' },
+                    { text: 'PHP代码段', link: '/php/php-code-block/'}
                 ]
             },
             {
@@ -141,9 +143,18 @@ module.exports = {
                     ''
                 ]
             }],
-            '/php/php-model/': [
+            '/php/php-code-block/': [
                 ''
             ],
+
+            '/python/python-model/':[
+                '',
+                'os',
+            ],
+            '/python/python-code-block/':[
+                '',
+                
+            ]
 
         },
         serviceWorker: {

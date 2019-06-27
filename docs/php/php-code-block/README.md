@@ -1,6 +1,7 @@
 # PHP代码块
 
 ## 在PHP代码中做ping
+
 ```php
 // ping 域名
 function pingAddress($address,$proxy=false) {
