@@ -23,7 +23,7 @@ django-admin startproject mysite
 
 让我们看看 startproject 创建了些什么:
 
-```shell
+```sh
 mysite/
     manage.py
     mysite/
