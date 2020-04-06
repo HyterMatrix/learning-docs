@@ -16,33 +16,56 @@ module.exports = {
         editLinkText: '帮助我们改善此页面！',
         nav: [
             {
+                text: 'Java',
+                items: [
+                    { text: 'Java', link: '/java/java-basics/' },
+                    { text: 'Spring', link: '/java/spring/' },
+                    { text: 'SpringBoot', link: '/java/spring-boot/' },
+                    { text: 'SpringCloud', link: '/java/spring-cloud/' },
+                  ]
+            },
+            {
+                text: 'Python',
+                items: [
+                    { text: 'Python', link: '/python/python-basics/' },
+                    { text: 'Python模块', link: '/python/python-model/' },
+                    { text: 'Python代码段', link: '/python/python-code-block/' },
+                    { text: 'Django', link: '/python/django-2.x/' },
+                    { text: 'Scarpy', link: '/python/python-scarpy/' },
+                  ]
+            },
+            {
+                text: 'PHP',
+                items: [
+                    { text: 'PHP基础', link: '/php/php-basics/' },
+                    { text: 'PHP模块', link: '/php/php-model/' },
+                    { text: 'PHP代码段', link: '/php/php-code-block/'}
+                ]
+            },
+            {
                 text: '编程语言',
                 items: [
                     { text: 'Java', items: [
-                            { text: '- Java基础', link: '/java/java-basics/' },
+                            { text: '- Java', link: '/java/java-basics/' },
                             { text: '- Spring', link: '/java/spring/' },
                             { text: '- SpringBoot', link: '/java/spring-boot/' },
                             { text: '- SpringCloud', link: '/java/spring-cloud/' },
                         ]
                     },
                     { text: 'Python', items: [
-                            { text: '- Python基础', link: '/python/python-basics/' },
-                            { text: '- Python模块', link: '/python/python-model/' },
-                            { text: '- Python代码段', link: '/python/python-code-block/' },
-                            { text: '- Django', link: '/python/django-2.x/' },
-                            { text: '- Scarpy', link: '/python/python-scarpy/' },
+                            { text: 'Python', link: '/python/python-basics/' },
+                            { text: 'Python模块', link: '/python/python-model/' },
+                            { text: 'Python代码段', link: '/python/python-code-block/' },
+                            { text: 'Django', link: '/python/django-2.x/' },
+                            { text: 'Scarpy', link: '/python/python-scarpy/' },
                         ]
                     },
                     { text: 'PHP', items: [
-                            { text: '- PHP基础', link: '/php/php-basics/' },
-                            { text: '- PHP模块', link: '/php/php-model/' },
-                            { text: '- PHP代码段', link: '/php/php-code-block/'}
-                        ]
-                    },
-                    { text: 'Go', items: [
-                        { text: '- Go基础', link: '/go/go-basics/' },
+                        { text: 'PHP基础', link: '/php/php-basics/' },
+                        { text: 'PHP模块', link: '/php/php-model/' },
+                        { text: 'PHP代码段', link: '/php/php-code-block/'}
                     ]
-                    },
+                },
                 ]
             },
 
@@ -91,8 +114,6 @@ module.exports = {
             // { text: '更新记录', link: '/update/' },
         ],
         sidebar: {
-
-            //===== JAVA START ====
             '/java/java-basics/': [{
                 title: 'Java笔记',
                 collapsable: false,
@@ -130,8 +151,6 @@ module.exports = {
                     ''
                 ]
             }],
-
-            //===== JAVA END  =====
             '/es6/': [{
                 title: '笔记',
                 collapsable: false,
@@ -146,11 +165,6 @@ module.exports = {
                     ''
                 ]
             }],
-
-
-            
-            
-            // ===== PYTHON STATR =======
             '/php/php-code-block/': [
                 ''
             ],
@@ -165,18 +179,7 @@ module.exports = {
             '/python/django-2.x/':[
                 '',
                 '01-intro'
-            ],
-            // ===== PYTHON END ======
-
-
-
-
-            //  ===== GO START =====
-            '/go/go-basics/':[
-                '',
-            ],
-            //  ===== GO END =====
-
+            ]
 
         },
         serviceWorker: {
