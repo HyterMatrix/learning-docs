@@ -28,7 +28,7 @@ module.exports = {
                     { text: 'Python', items: [
                             { text: '- Python基础', link: '/python/python-basics/' },
                             { text: '- Python模块', link: '/python/python-model/' },
-                            { text: '- Python代码段', link: '/python/python-code-block/' },
+                            // { text: '- Python代码段', link: '/python/python-code-block/' },
                             { text: '- Django', link: '/python/django-2.x/' },
                             { text: '- Scarpy', link: '/python/python-scarpy/' },
                         ]
@@ -48,11 +48,7 @@ module.exports = {
 
             {
                 text: '博客',
-                items: [
-                    { text: '博客', link: 'https://hyter.me/' },
-                    { text: '备用博客地址', link: 'https://HyterMatrix.coding.me/blog' },
-                    { text: '备用文档地址', link: 'https://HyterMatrix.coding.me/learning-docs' }
-                  ]
+                link: 'https://hyter.me/',
             },
             {
                 text: '在线文档',
