@@ -16,7 +16,7 @@ module.exports = {
         editLinkText: '帮助我们改善此页面！',
         nav: [
             {
-                text: '编程语言',
+                text: '后端编程',
                 items: [
                     { text: 'Java', items: [
                             { text: '- Java基础', link: '/java/java-basics/' },
@@ -45,7 +45,17 @@ module.exports = {
                     },
                 ]
             },
-
+            {
+                text: '前端编程',
+                items:  [
+                    {
+                        text: 'JavaScrpt', items: [
+                            { text: '- JavaScrpt基础', link: '/javascrpt/javascrpt-basics/' },
+                            { text: '- ES6', link: '/javascrpt/es6/' },
+                    ]
+                    },
+                ]
+            },
             {
                 text: '博客',
                 link: 'https://hyter.me/',
@@ -75,15 +85,15 @@ module.exports = {
                     },
                   ]
             },
-            {
-                text: '项目',
-                items: [
-                    { text: '', items: [
-                            { text: '第三方公众号管理平台', link: '/java-project/' },
-                        ]
-                    },
-                  ]
-            },
+            // {
+            //     text: '项目',
+            //     items: [
+            //         { text: '', items: [
+            //                 { text: '第三方公众号管理平台', link: '/java-project/' },
+            //             ]
+            //         },
+            //       ]
+            // },
             // { text: '更新记录', link: '/update/' },
         ],
         sidebar: {
@@ -128,11 +138,13 @@ module.exports = {
             }],
 
             //===== JAVA END  =====
-            '/es6/': [{
+
+            '/javascrpt/es6/': [{
                 title: '笔记',
                 collapsable: false,
                 children:[
-                    ''
+                    '',
+                    '01-let'
                 ]
             }],
             '/nodejs/': [{
