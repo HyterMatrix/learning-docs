@@ -52,7 +52,17 @@ module.exports = {
                         text: 'JavaScrpt', items: [
                             { text: '- JavaScrpt基础', link: '/javascrpt/javascrpt-basics/' },
                             { text: '- ES6', link: '/javascrpt/es6/' },
-                    ]
+                        ]
+                    },
+                    {
+                        text: 'nodeJS', items: [
+                            { text: '- nodeJS基础', link: '/nodejs/nodejs-basics/' },
+                        ]
+                    },
+                    {
+                        text: 'Electron', items: [
+                            { text: '- Electron基础', link: '/electron/' },
+                        ]
                     },
                 ]
             },
