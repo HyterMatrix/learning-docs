@@ -1,6 +1,9 @@
 #!/usr/bin/env sh
 set -e
 
+# 删除上次生成的文件
+rm -rf ./docs/.vuepress/dist/*
+
 npm run docs:build
 
 cd ./docs/.vuepress/dist

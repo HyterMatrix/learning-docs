@@ -154,7 +154,8 @@ module.exports = {
                 collapsable: false,
                 children:[
                     '',
-                    '01-let'
+                    '01-let',
+                    '02-destructuring'
                 ]
             }],
             '/nodejs/': [{
