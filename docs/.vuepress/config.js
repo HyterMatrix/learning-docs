@@ -156,7 +156,8 @@ module.exports = {
                     '',
                     '01-let',
                     '02-destructuring',
-                    '03-string'
+                    '03-string',
+                    '04-string-methods',
                 ]
             }],
             '/nodejs/': [{
