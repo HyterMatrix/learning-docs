@@ -155,7 +155,8 @@ module.exports = {
                 children:[
                     '',
                     '01-let',
-                    '02-destructuring'
+                    '02-destructuring',
+                    '03-string'
                 ]
             }],
             '/nodejs/': [{
