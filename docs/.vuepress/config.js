@@ -52,6 +52,7 @@ module.exports = {
                         text: 'JavaScrpt', items: [
                             { text: '- JavaScrpt基础', link: '/javascrpt/javascrpt-basics/' },
                             { text: '- ES6', link: '/javascrpt/es6/' },
+                            { text: '- nodeJS基础', link: '/javascrpt/nodejs-basics/' },
                         ]
                     },
                     {
@@ -146,9 +147,8 @@ module.exports = {
                     ''
                 ]
             }],
-
             //===== JAVA END  =====
-
+            //===== JAVASCRPT STATR  =====
             '/javascrpt/es6/': [{
                 title: '笔记',
                 collapsable: false,
@@ -161,14 +161,15 @@ module.exports = {
                     '05-regex'
                 ]
             }],
-            '/nodejs/': [{
+            
+            '/nodejs/nodejs-basics/': [{
                 title: '笔记',
                 collapsable: false,
                 children:[
                     ''
                 ]
             }],
-
+            //===== JAVASCRPT END  =====
 
             
             
