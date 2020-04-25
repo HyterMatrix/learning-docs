@@ -120,6 +120,7 @@ module.exports = {
                 '03-java-class-and-object',
                 '04-inheritance',
                 '05-interface-lambda-innerclass',
+                '06-api',
                 'QA']
             }],
             '/java/spring/': [{
