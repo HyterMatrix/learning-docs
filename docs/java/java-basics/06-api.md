@@ -252,9 +252,7 @@ int i = r.nextInt();
 
 #### 查看成员方法 
 
-`public int nextInt(int n) `：返回一个伪随机数，范围在 0 （包括）和 指定值 n （不包括）之间的 int 值。
-
- 使用Random类，完成生成3个10以内的随机整数的操作，代码如下：
+`public int nextInt(int n) `：返回一个伪随机数，范围在 0 （包括）和 指定值 n （不包括）之间的 int 值。使用Random类，完成生成3个10以内的随机整数的操作，代码如下：
 
 ```java
 //1. 导包 
@@ -391,9 +389,7 @@ public class Test01StudentArray {
 
 `java.util.ArrayList <E> `：该类需要 import导入使后使用。
 
-`<E>` ，表示一种指定的数据类型，叫做泛型。 `E `，取自Element（元素）的首字母。在出现 E 的地方，我们使 
-
-用一种引用数据类型将其替换即可，表示我们将存储哪种引用类型的元素。代码如下： 
+`<E>` ，表示一种指定的数据类型，叫做泛型。 `E `，取自Element（元素）的首字母。在出现 E 的地方，我们使 用一种引用数据类型将其替换即可，表示我们将存储哪种引用类型的元素。代码如下： 
 
 ```java
 ArrayList<String>，ArrayList<Student>
@@ -419,7 +415,228 @@ ArrayList<String> list = new ArrayList<>();
 
 * `public boolean add(E e) `： 将指定的元素添加到此集合的尾部
 
-参数` E e` ，在构造ArrayList对象时， <E> 指定了什么数据类型，那么 add(E e) 方法中，只能添加什么数据 
+参数` E e`，在构造ArrayList对象时，`<E>` 指定了什么数据类型，那么 `add(E e)` 方法中，只能添加什么数据 类型的对象。 
 
-类型的对象。 
+使用ArrayList类，存储三个字符串元素，代码如下： 
 
+```java
+public class Test02StudentArrayList { 
+    public static void main(String[] args) { 
+        //创建学生数组 
+        ArrayList<String> list = new ArrayList<>(); 
+        //创建学生对象 
+        String s1 = "曹操"; 
+        String s2 = "刘备"; 
+        String s3 = "孙权"; 
+        //打印学生ArrayList集合 
+        System.out.println(list); 
+        //把学生对象作为元素添加到集合 
+        list.add(s1); 
+        list.add(s2); 
+        list.add(s3);
+        //打印学生ArrayList集合 
+        System.out.println(list); 
+    } 
+}
+```
+
+####  常用方法和遍历
+
+对于元素的操作,基本体现在——增、删、查。常用的方法有： 
+
+* `public boolean add(E e) `：将指定的元素添加到此集合的尾部。 
+
+* `public E remove(int index)` ：移除此集合中指定位置上的元素。返回被删除的元素。 
+* `public E get(int index)` ：返回此集合中指定位置上的元素。返回获取的元素。 
+* `public int size()` ：返回此集合中的元素数。遍历集合时，可以控制索引范围，防止越界。
+
+这些都是最基本的方法，操作非常简单，代码如下: 
+
+```java
+public class Demo01ArrayListMethod { 
+    public static void main(String[] args) { 
+        //创建集合对象 
+        ArrayList<String> list = new ArrayList<String>(); 
+        //添加元素 
+        list.add("hello"); 
+        list.add("world");
+        list.add("java"); 
+        //public E get(int index):返回指定索引处的元素 
+        System.out.println("get:"+list.get(0)); 
+        System.out.println("get:"+list.get(1)); 
+        System.out.println("get:"+list.get(2)); 
+        //public int size():返回集合中的元素的个数 
+        System.out.println("size:"+list.size()); 
+        //public E remove(int index):删除指定索引处的元素，返回被删除的元素 
+        System.out.println("remove:"+list.remove(0)); 
+        //遍历输出 
+        for(int i = 0; i < list.size(); i++){
+            System.out.println(list.get(i)); 
+        }
+    } 
+}
+```
+
+#### 如何存储基本数据类型
+
+ArrayList对象不能存储基本类型，只能存储引用类型的数据。类似`<int>` **不能写**，但是存储基本数据类型对应的 包装类型是可以的。所以，想要存储基本类型数据， `<>` 中的数据类型，必须转换后才能编写，转换写法如下： 
+
+| 基本元素 | 基本类型包装类 |
+| :------- | -------------- |
+| byte     | Byte           |
+| short    | Short          |
+| int      | Integer        |
+| long     | Long           |
+| float    | Float          |
+| double   | Double         |
+| char     | Character      |
+| boolean  | Boolean        |
+
+我们发现，只有`Integer`和 `Character`需要特殊记忆，其他基本类型只是首字母大写即可。那么存储基本类型数 据，代码如下：
+
+```java
+public class Demo02ArrayListMethod { 
+    public static void main(String[] args) { 
+        ArrayList<Integer> list = new ArrayList<Integer>(); 
+        list.add(1); 
+        list.add(2); 
+        list.add(3); 
+        list.add(4); 
+        System.out.println(list); 
+    } 
+}
+```
+
+### ArrayList练习
+
+#### 数值添加到集合
+
+生成6个1~33之间的随机整数,添加到集合,并遍历
+
+```java
+public class Test01ArrayList { 
+    public static void main(String[] args) { 
+        // 创建Random 对象 
+        Random random = new Random(); 
+        // 创建ArrayList 对象 
+        ArrayList<Integer> list = new ArrayList<>(); 
+        // 添加随机数到集合 
+        for (int i = 0; i < 6; i++) { 
+            int r = random.nextInt(33) + 1;
+            list.add(r); 
+        }
+        // 遍历集合输出 
+        for (int i = 0; i < list.size(); i++) { 
+            System.out.println(list.get(i)); 
+        } 
+    } 
+}
+```
+
+#### 对象添加到集合
+
+自定义4个学生对象,添加到集合,并遍历
+
+```java
+public class Test02ArrayList { 
+    public static void main(String[] args) { 
+        //创建集合对象 
+        ArrayList<Student> list = new ArrayList<Student>(); 
+        //创建学生对象 
+        Student s1 = new Student("赵丽颖",18); 
+        Student s2 = new Student("唐嫣",20); 
+        Student s3 = new Student("景甜",25); 
+        Student s4 = new Student("柳岩",19); 
+        //把学生对象作为元素添加到集合中 
+        list.add(s1); 
+        list.add(s2); 
+        list.add(s3); 
+        list.add(s4); 
+        //遍历集合 
+        for(int x = 0; x < list.size(); x++) { 
+            Student s = list.get(x); 
+            System.out.println(s.getName()+"‐‐‐"+s.getAge()); 
+        } 
+    } 
+}
+```
+
+#### 打印集合方法
+
+定义以指定格式打印集合的方法(ArrayList类型作为参数)，使用{}扩起集合，使用@分隔每个元素。格式参照 {元素@元素@元素}。
+
+```java
+public class Test03ArrayList { 
+    public static void main(String[] args) { 
+        // 创建集合对象 
+        ArrayList<String> list = new ArrayList<String>(); 
+        // 添加字符串到集合中 
+        list.add("张三丰"); 
+        list.add("宋远桥");
+        list.add("张无忌"); 
+        list.add("殷梨亭"); 
+        // 调用方法 
+        printArrayList(list); 
+    }
+    public static void printArrayList(ArrayList<String> list) { 
+        // 拼接左括号 
+        System.out.print("{"); 
+        // 遍历集合 
+        for (int i = 0; i < list.size(); i++) {
+            // 获取元素 
+            String s = list.get(i); 
+            // 拼接@符号 
+            if (i != list.size() ‐ 1) { 
+                System.out.print(s + "@"); 
+            } else { 
+                // 拼接右括号 
+                System.out.print(s + "}"); 
+            } 
+        } 
+    } 
+}
+```
+
+#### 获取集合方法
+
+定义获取所有偶数元素集合的方法(ArrayList类型作为返回值)
+
+```java
+public class Test04ArrayList { 
+    public static void main(String[] args) { 
+        // 创建Random 对象 
+        Random random = new Random(); 
+        // 创建ArrayList 对象 
+        ArrayList<Integer> list = new ArrayList<>(); 
+        // 添加随机数到集合 
+        for (int i = 0; i < 20; i++) { 
+            int r = random.nextInt(1000) + 1; 
+            list.add(r); 
+        }
+        // 调用偶数集合的方法 
+        ArrayList<Integer> arrayList = getArrayList(list); 
+        System.out.println(arrayList); 
+    }
+    public static ArrayList<Integer> getArrayList(ArrayList<Integer> list) { 
+        // 创建小集合,来保存偶数
+        ArrayList<Integer> smallList = new ArrayList<>(); 
+        // 遍历list 
+        for (int i = 0; i < list.size(); i++) { 
+            // 获取元素
+            Integer num = list.get(i); 
+            // 判断为偶数,添加到小集合中 
+            if (num % 2 == 0){ 
+                smallList.add(num); 
+            } 
+        }
+        // 返回小集合 
+        return smallList; 
+    } 
+}
+```
+
+## 6.6 String类
+
+## 6.7 static静态
+
+## 6.8 Math类

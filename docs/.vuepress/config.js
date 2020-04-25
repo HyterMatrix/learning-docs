@@ -121,7 +121,8 @@ module.exports = {
                 '04-inheritance',
                 '05-interface-lambda-innerclass',
                 '06-api',
-                'QA']
+                'QA'
+            ]
             }],
             '/java/spring/': [{
                 title: '笔记',
