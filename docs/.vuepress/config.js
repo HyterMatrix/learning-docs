@@ -160,7 +160,8 @@ module.exports = {
                     '02-destructuring',
                     '03-string',
                     '04-string-methods',
-                    '05-regex'
+                    '05-regex',
+                    '06-number'
                 ]
             }],
             
