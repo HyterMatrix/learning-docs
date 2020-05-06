@@ -200,6 +200,7 @@ module.exports = {
             //  ===== GO START =====
             '/go/go-basics/':[
                 '',
+                '02-type'
             ],
             //  ===== GO END =====
 
