@@ -164,6 +164,7 @@ module.exports = {
                     '06-number',
                     '07-function',
                     '08-array',
+                    '09-object'
                 ]
             }],
             
