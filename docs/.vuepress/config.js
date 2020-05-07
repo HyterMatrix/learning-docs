@@ -161,7 +161,9 @@ module.exports = {
                     '03-string',
                     '04-string-methods',
                     '05-regex',
-                    '06-number'
+                    '06-number',
+                    '07-function',
+                    '08-array',
                 ]
             }],
             
@@ -175,15 +177,19 @@ module.exports = {
             //===== JAVASCRPT END  =====
 
             
-            
-            // ===== PYTHON STATR =======
             '/php/php-code-block/': [
                 ''
+            ],
+            // ===== PYTHON STATR =======
+            '/python/python-basics/':[
+                '',
+                '01-dataType',
             ],
 
             '/python/python-model/':[
                 '',
-                'os',
+                '01-os',
+                '02-sys',
             ],
             '/python/python-code-block/':[
                 '',
