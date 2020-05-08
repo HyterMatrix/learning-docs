@@ -185,7 +185,8 @@ module.exports = {
             // ===== PYTHON STATR =======
             '/python/python-basics/':[
                 '',
-                '01-dataType',
+                '01-var',
+                '02-data-type',
             ],
 
             '/python/python-model/':[
