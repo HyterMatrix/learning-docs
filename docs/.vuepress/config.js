@@ -184,12 +184,16 @@ module.exports = {
                 ''
             ],
             // ===== PYTHON STATR =======
-            '/python/python-basics/':[
-                '',
+            '/python/python-basics/':[{
+                title: '笔记',
+                collapsable: false,
+                children:[
+                    '',
                 '01-var',
                 '02-data-type',
                 '03-operator',
-            ],
+            ]}
+        ],
 
             '/python/python-model/':[
                 '',
