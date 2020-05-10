@@ -41,6 +41,7 @@ module.exports = {
                     },
                     { text: 'Go', items: [
                         { text: '- Go基础', link: '/go/go-basics/' },
+                        { text: '- Go模块', link: '/go/go-model/' },
                     ]
                     },
                 ]
@@ -187,6 +188,7 @@ module.exports = {
                 '',
                 '01-var',
                 '02-data-type',
+                '03-operator',
             ],
 
             '/python/python-model/':[
