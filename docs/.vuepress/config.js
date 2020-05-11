@@ -28,7 +28,7 @@ module.exports = {
                     { text: 'Python', items: [
                             { text: '- Python基础', link: '/python/python-basics/' },
                             { text: '- Python模块', link: '/python/python-model/' },
-                            // { text: '- Python代码段', link: '/python/python-code-block/' },
+                            { text: '- Python专题', link: '/python/python-zhuanti/' },
                             { text: '- Django', link: '/python/django-2.x/' },
                             { text: '- Scarpy', link: '/python/python-scarpy/' },
                         ]
@@ -183,6 +183,7 @@ module.exports = {
             '/php/php-code-block/': [
                 ''
             ],
+
             // ===== PYTHON STATR =======
             '/python/python-basics/':[{
                 title: '笔记',
@@ -196,16 +197,32 @@ module.exports = {
         ],
 
             '/python/python-model/':[
-                '',
-                '01-os',
-                '02-sys',
+                {
+                    title: '笔记',
+                    collapsable: false,
+                    children:[
+                        '',
+                        '01-os',
+                        '02-sys',
+                    ]}
             ],
-            '/python/python-code-block/':[
-                '',
+            '/python/python-zhuanti/':[{
+                    title: '专题',
+                    collapsable: false,
+                    children:[
+                        // '',
+                        '01-asyncio',
+                    ]}
+           
             ],
-            '/python/django-2.x/':[
-                '',
-                '01-intro'
+            '/python/django-2.x/':[{
+                title: 'django2.x笔记',
+                collapsable: false,
+                children:[
+                    '',
+                    '01-intro'
+                ]}
+               
             ],
             // ===== PYTHON END ======
 
@@ -214,6 +231,7 @@ module.exports = {
 
             //  ===== GO START =====
             '/go/go-basics/':[
+                
                 '',
                 '02-type'
             ],
