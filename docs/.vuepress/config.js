@@ -108,6 +108,16 @@ module.exports = {
                         ]
                     },
                     {
+                        text: 'Vue',
+                        children: [
+                            {
+                                text: 'Vuejs基础',
+                                link: '/vuejs/'
+                            }
+                            
+                        ]
+                    },
+                    {
                         text: 'Electron',
                         children: [
                             {
@@ -132,6 +142,14 @@ module.exports = {
                             {
                                 text: '基础知识',
                                 link: '/',
+                            },
+                            {
+                                text: 'Mysql5.7.x',
+                                link: '/',
+                            },
+                            {
+                                text: 'Mysql8.x',
+                                link: '/',
                             }
                         ]
                     },
@@ -144,6 +162,26 @@ module.exports = {
                             }
                         ]
                     }
+                ]
+            },
+            {
+                text: "开发相关",
+                children: [
+                    {
+                        text: 'Git',
+                        children: [
+                            {
+                                text: 'Git基础',
+                                link: '/server/git/'
+                            }
+                        ]
+                        
+                    },
+                    {
+                        text: 'Docker',
+                        link: '/server/'
+                    }
+
                 ]
             }
         ],

@@ -4,8 +4,8 @@ tagline: 千里之行，始于足下
 home: true
 heroImage: image/index.png
 actions:
-- text: 全栈
-  link: /java/java-basics/
+- text: Java
+  link: /java/
   type: primary
 - text: 项目简介
   link: /guide/
